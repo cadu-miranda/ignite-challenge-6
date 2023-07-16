@@ -19,12 +19,14 @@ describe("Create User", () => {
       password: "1234",
     };
 
-    const userCreated = await createUserUseCase.execute({
+    const createdUser = await createUserUseCase.execute({
       name: user.name,
       email: user.email,
       password: user.password,
     });
 
-    expect(userCreated).toHaveProperty("id");
+    expect(createdUser).toHaveProperty("id");
+    expect(createdUser.name).toEqual(user.name);
+    expect(createdUser.email).toEqual(user.email);
   });
 });
